@@ -37,7 +37,6 @@
 
 - (void)show:(CDVInvokedUrlCommand*)command
 {
-    
     if(self.tblView == nil )
     {
         self.tableItems = [command argumentAtIndex:0];
@@ -106,7 +105,7 @@
     CDVPluginResult* pluginResult = [CDVPluginResult
                                      resultWithStatus:CDVCommandStatus_OK
                                      messageAsString:@"hided it"];
-    
+
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^() {
         self.webView.frame = frame;
     }completion:^(BOOL finished){
@@ -131,20 +130,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//    NSString* jsString = [[NSString alloc] initWithFormat:@"getItemCount(%d);",section];
-//    NSString* strValue = [ webView stringByEvaluatingJavaScriptFromString:jsString];
-//    
-//    int retValue = [strValue intValue];
-//    
-//    [jsString release];
-    
+{   
     return [self.tableItems count];
 }
-
-
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -159,22 +147,17 @@
         //		 UITableViewCellStyleValue1,		// Left aligned label on left and right aligned label on right with blue text (Used in Settings)
         //		 UITableViewCellStyleValue2,		// Right aligned label on left with blue text and left aligned label on right (Used in Phone/Contacts)
         //		 UITableViewCellStyleSubtitle	// Left aligned label on top and left aligned label on bottom with gray text (Used in iPod).
-        
-        
+
         cell = [[ UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
         [[ cell textLabel ] setTextColor:[ UIColor blackColor]];
-        
         
         //		 UITableViewCellAccessoryNone,                   // don't show any accessory view
         //		 UITableViewCellAccessoryDisclosureIndicator,    // regular chevron. doesn't track
         //		 UITableViewCellAccessoryDetailDisclosureButton, // blue button w/ chevron. tracks
         //		 UITableViewCellAccessoryCheckmark               // checkmark. doesn't track
         
-        
         cell.backgroundColor = [ UIColor grayColor]; // this only works for tables with type grouped
         cell.accessoryType = UITableViewCellAccessoryNone;
-        
         
         //		 UITableViewCellSelectionStyleNone,
         //		 UITableViewCellSelectionStyleBlue,
@@ -184,124 +167,10 @@
     }
     
     int indexPosition = [indexPath indexAtPosition:1] ;
-    
-    //NSString* jsString = [[NSString alloc] initWithFormat:@"getItemAtIndex(%d);", indexPosition];
-    
-   
-    
-    NSString* cellText = self.tableItems[indexPosition];//[ webView stringByEvaluatingJavaScriptFromString:jsString];
-    
-    
-    //NSDictionary* obj = (NSDictionary*)[cellText JSONFragmentValue];
-    
-    // This was to test the time it took to receive a call, at startup
-    // it takes 10-30 ms per call to js
-    
-    cell.textLabel.text = cellText; //[obj objectForKey:@"text"];
-    //cell.detailTextLabel.text = cellText; //[obj objectForKey:@"detailText"];
-    
-    //NSString* imgSrc = [obj objectForKey:@"image"];
-    
-    //AppRecord *appRecord = NULL;
-    
-//    if([entries count] > indexPosition)
-//    {
-//        appRecord = (AppRecord*)[entries objectAtIndex:indexPosition];
-//        
-//    }
-    
-    if (false ) //!appRecord || !appRecord.appIcon)
-    {
-//        if(!appRecord)
-//        {
-//            appRecord = [[[AppRecord alloc] init] autorelease];
-//            appRecord.imageURLString = imgSrc;
-//            [ entries setObject:appRecord atIndex:indexPosition];
-//        }
-//        
-//        if (self.tblView.dragging == NO && self.tblView.decelerating == NO)
-//        {
-//            [self startIconDownload:appRecord forIndexPath:indexPath];
-//        }
-//        // if a download is deferred or in progress, return a placeholder image
-//        cell.imageView.image = [UIImage imageNamed:@"Placeholder.png"];                
-    }
-    else
-    {
-        //cell.imageView.image = appRecord.appIcon;
-    }
-    
- //   [jsString release];
-    
+    NSString* cellText = self.tableItems[indexPosition];
+    cell.textLabel.text = cellText;
     return cell;
-    
 }
-
-
-#pragma mark -
-#pragma mark Table cell image support
-
-//- (void)startIconDownload:(AppRecord *)appRecord forIndexPath:(NSIndexPath *)indexPath
-//{
-//    IconDownloader *iconDownloader = [imageDownloadsInProgress objectForKey:indexPath];
-//    if (iconDownloader == nil)
-//    {
-//        iconDownloader = [[IconDownloader alloc] init];
-//        iconDownloader.appRecord = appRecord;
-//        iconDownloader.indexPathInTableView = indexPath;
-//        iconDownloader.delegate = self;
-//        [imageDownloadsInProgress setObject:iconDownloader forKey:indexPath];
-//        [iconDownloader startDownload];
-//        [iconDownloader release];
-//    }
-//}
-
-// called by our ImageDownloader when an icon is ready to be displayed
-- (void)appImageDidLoad:(NSIndexPath *)indexPath
-{
-//    IconDownloader *iconDownloader = [imageDownloadsInProgress objectForKey:indexPath];
-//    if (iconDownloader != nil)
-//    {
-//        UITableViewCell *cell = [self.tblView cellForRowAtIndexPath:iconDownloader.indexPathInTableView];
-//        
-//        // Display the newly loaded image
-//        cell.imageView.image = iconDownloader.appRecord.appIcon;
-//    }
-}
-
-
-// this method is used in case the user scrolled into a set of cells that don't have their app icons yet
-- (void)loadImagesForOnscreenRows
-{
-//    if ([self.entries count] > 0)
-//    {
-//        NSArray *visiblePaths = [self.tblView indexPathsForVisibleRows];
-//        for (NSIndexPath *indexPath in visiblePaths)
-//        {
-//            AppRecord *appRecord = [self.entries objectAtIndex:indexPath.row];
-//            
-//            if (!appRecord.appIcon) // avoid the app icon download if the app already has an icon
-//            {
-//                [self startIconDownload:appRecord forIndexPath:indexPath];
-//            }
-//        }
-//    }
-}
-
-// Load images for all onscreen rows when scrolling is finished
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (!decelerate)
-    {
-        [self loadImagesForOnscreenRows];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self loadImagesForOnscreenRows];
-}
-
 
 
 @end
