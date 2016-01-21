@@ -21,7 +21,6 @@ To install in your project
 - `cbError:` callback to be called if there was an error showing the sidebar control
 - `items:` an array of strings to display as a list in the sidebar control, when the user selects an item, the index in this array will be returned to the callback function
 
-
     pgsidebar.hide(cbSuccess,cbError)
 
 - `cbSuccess:` callback to be called when the sidebar control is hidden
