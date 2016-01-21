@@ -1,0 +1,42 @@
+{
+    "name": "phonegap-plugin-sidebar",
+    "description": "Adds a side-bar menu your PhoneGap app",
+    "version": "0.0.1",
+    "homepage": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+      "url": ""
+    },
+    "cordova": {
+      "id": "phonegap-plugin-sidebar",
+      "platforms": [
+        "ios",
+        "android",
+        "windows"
+      ]
+    },
+    "keywords": [
+      "ecosystem:cordova",
+      "ecosystem:phonegap",
+      "cordova-ios",
+      "cordova-android",
+      "cordova-windows"
+    ],
+    "engines": [
+      {
+        "name": "cordova",
+        "version": ">=3.0.0"
+      }
+    ],
+    "author": "Jesse MacFadyen",
+    "license": "APL",
+    "scripts": {
+        "test": "jasmine-node --color spec"
+    },
+    "devDependencies": {
+        "jasmine-node": "1.14.5"
+    }
+}

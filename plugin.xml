@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+xmlns:android="http://schemas.android.com/apk/res/android"
+           id="phonegap-plugin-sidebar"
+      version="1.2.3">
+    <name>PGSideBar</name>
+    <description>PhoneGap Sidebar Plugin</description>
+    <license></license>
+    <keywords>phonegap,sidebar,tray</keywords>
+    <repo></repo>
+    <issue></issue>
+
+    <js-module src="www/index.js" name="pgsidebar">
+        <clobbers target="pgsidebar" />
+    </js-module>
+
+	<platform name="android">
+	</platform>
+
+
+    <platform name="ios">
+        <source-file src="src/ios/PGSideBar.m" />
+        <header-file src="src/ios/PGSideBar.h" />
+        
+        <config-file target="config.xml" parent="/*">
+            <feature name="PGSideBar">
+                <param name="ios-package" value="PGSideBar" />
+            </feature>
+        </config-file>
+    </platform>
+</plugin>
