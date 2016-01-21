@@ -31,7 +31,6 @@
 @property (nonatomic, retain) NSMutableArray* tableItems;
 @property (nonatomic, copy) NSString *callbackId;
 
-- (void)init:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
 - (void)hide:(CDVInvokedUrlCommand*)command;
 

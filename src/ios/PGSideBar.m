@@ -42,38 +42,37 @@
     {
         self.tableItems = [command argumentAtIndex:0];
         
-        self.tblView = [UITableView alloc];
+        
         self.callbackId = command.callbackId;
         
         CGRect frame = self.webView.frame;
-        
+
         CGRect rect = CGRectZero;
             rect.size.width = 240;
             rect.size.height = frame.size.height;
             rect.origin.y = frame.origin.y;
             rect.origin.x = frame.origin.x;
 
-        // UITableViewStyleGrouped
-        [tblView initWithFrame:rect style:UITableViewStylePlain];
+        // UITableViewStyleGrouped // alternative style
+        self.tblView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
         tblView.delegate = self;
         tblView.dataSource = self;
         tblView.backgroundColor = [ UIColor grayColor];
         tblView.sectionHeaderHeight = 120;
         tblView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        
         UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.webView.bounds];
         self.webView.layer.masksToBounds = NO;
         self.webView.layer.shadowColor = [UIColor blackColor].CGColor;
         self.webView.layer.shadowOpacity = 0.5f;
+        self.webView.layer.shadowOffset = CGSizeMake(0.0f, 12.0);
         self.webView.layer.shadowRadius = 12.0f;
         self.webView.layer.shadowPath = shadowPath.CGPath;
         
-        
         [self.viewController.view addSubview:tblView];
-        [self.viewController.view sendSubviewToBack:tblView];
+        [self.viewController.view bringSubviewToFront:self.webView];
         
-        frame.origin.x = 240;
+        frame.origin.x = 240; // magic number!
         
         CDVPluginResult* pluginResult = [CDVPluginResult
                                          resultWithStatus:CDVCommandStatus_OK];
@@ -114,6 +113,8 @@
         tblView.dataSource = nil;
         [tblView removeFromSuperview];
         tblView = nil;
+        self.webView.layer.masksToBounds = YES;
+        self.webView.layer.shadowPath = nil;
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
@@ -140,6 +141,12 @@
 //    [jsString release];
     
     return [self.tableItems count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+    return statusBarFrame.size.height;
 }
 
 
