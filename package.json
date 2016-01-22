@@ -2,13 +2,13 @@
     "name": "phonegap-plugin-sidebar",
     "description": "Adds a side-bar menu your PhoneGap app",
     "version": "0.0.1",
-    "homepage": "",
+    "homepage": "https://github.com/purplecabbage/phonegap-plugin-sidebar",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/purplecabbage/phonegap-plugin-sidebar.git"
     },
     "bugs": {
-      "url": ""
+      "url": "https://github.com/purplecabbage/phonegap-plugin-sidebar/issues"
     },
     "cordova": {
       "id": "phonegap-plugin-sidebar",
@@ -34,9 +34,8 @@
     "author": "Jesse MacFadyen",
     "license": "APL",
     "scripts": {
-        "test": "jasmine-node --color spec"
+        "test": ""
     },
     "devDependencies": {
-        "jasmine-node": "1.14.5"
     }
 }
