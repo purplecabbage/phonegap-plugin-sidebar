@@ -27,3 +27,16 @@ To install in your project
 - `cbError:` callback to be called if there was an error hiding the sidebar control
 
 
+## Demo
+
+To run the demo app (iOS only for now) 
+
+_Note: you only get the demo app if you download/clone/fork the repo from github. npm published versions 
+do not include the demo app._
+
+
+    cd demo/
+    cordova plugin add cordova-plugin-statusbar
+    cordova plugin add --link ../
+    cordova platform add ios
+    cordova run ios
