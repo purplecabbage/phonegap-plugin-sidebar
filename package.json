@@ -35,7 +35,5 @@
     "license": "APL",
     "scripts": {
         "test": ""
-    },
-    "devDependencies": {
     }
 }
