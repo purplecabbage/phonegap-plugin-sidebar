@@ -1,5 +1,4 @@
-﻿cordova.define("phonegap-plugin-sidebar.pgsidebarproxy", function(require, exports, module) { 
-
+﻿
 var urlutil = require('cordova/urlutil');
 var bodyOverflowStyle;
 var sideBar;
@@ -74,12 +73,5 @@ module.exports = {
 };
 
 
-
-
-
-
-console.log("installing proxy");
-
-
 require("cordova/exec/proxy").add("PGSideBar",module.exports);
-});
+
