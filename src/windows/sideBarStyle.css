@@ -1,0 +1,36 @@
+﻿
+body {
+    transition: transform 300ms ease-in-out;
+}
+
+
+.sideBar {
+    background-color:#000;
+    position:absolute;
+    height:100%;
+    left:-300px;
+    top:0px;
+    width:300px;
+    overflow:scroll;
+    -ms-overflow-style:-ms-autohiding-scrollbar;
+    border:1px solid #CCC;
+    
+}
+
+.sideBar ul {
+    background-color:#EEE;
+    margin:10px 0px;
+}
+
+.sideBar ul li {
+    background-color:#EEE;
+    list-style:none;
+    margin:20px 8px;
+    height:120px;
+    border-bottom:1px solid #CCC;
+}
+
+.sideBar ul li:active {
+     background-color:#CCC;
+}
+
