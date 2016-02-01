@@ -29,6 +29,7 @@
 
 @property (nonatomic, retain) UITableView* tblView;
 @property (nonatomic, retain) NSMutableArray* tableItems;
+@property (nonatomic) BOOL leftSide;
 @property (nonatomic, copy) NSString *callbackId;
 
 - (void)show:(CDVInvokedUrlCommand*)command;
