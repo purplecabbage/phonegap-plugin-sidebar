@@ -16,6 +16,13 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     </js-module>
 
 	<platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PGSideBar" >
+                <param name="android-package" value="com.phonegap.PGSideBar"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/PGSideBar.java" target-dir="src/com/phonegap/pgsidebar" />
 	</platform>
 
 
@@ -29,6 +36,11 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             </feature>
         </config-file>
     </platform>
+
+    <platform name="android">
+        <source-file src="src/android/PGSideBar.java" />
+    </platform>
+
     
     <platform name="windows">
         <js-module src="src/windows/PGSideBarProxy.js" name="pgsidebarproxy">
@@ -36,4 +48,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         </js-module>
          <asset src="src/windows/sideBarStyle.css" target="sideBarStyle.css" />
     </platform>
+
+
 </plugin>
